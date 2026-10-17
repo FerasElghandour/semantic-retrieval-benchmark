@@ -1,18 +1,39 @@
 # Semantic Retrieval Benchmark
 
-**Feras Elghandour** · Technical case study
-
 Compare lexical, static-embedding, and transformer retrieval to quantify the accuracy and indexing-cost trade-off for question answering.
 
 ## Implementation
 
 A standalone BM25 implementation, an optional Sentence Transformers index, and macro retrieval metrics.
 
-```mermaid
-flowchart LR
-    A[Validated inputs] --> B[Portable implementation]
-    B --> C[Evaluation and contract checks]
-    C --> D[Inspectable results]
+![Implementation mechanism: Documents and query → TF-IDF or BM25 scoring → Rank document identifiers → Recall and precision at k → Full-ranking reciprocal rank aggregation](assets/mechanism.svg)
+
+## Try a small example
+
+A tiny local corpus exercises lexical ranking and metrics. Reciprocal rank uses the full ranking; this is not a benchmark of pretrained embedding quality.
+
+After the local setup below, run from the repository root:
+
+```sh
+python examples/quickstart.py
+```
+
+The [example source](examples/quickstart.py), [captured output](examples/expected-output.txt) and [execution record](examples/environment.json) keep this demonstration inspectable. Floating-point values may vary with library versions.
+
+Observed output from this run:
+
+```text
+{
+  "ranked_indices": [
+    0
+  ],
+  "top_document": "walrus tusks",
+  "metrics": {
+    "recall": 1.0,
+    "precision": 1.0,
+    "mrr": 1.0
+  }
+}
 ```
 
 ## Completed study
@@ -40,5 +61,3 @@ For optional dense retrieval, install `sentence-transformers` separately and pas
 ## Practical relevance and limitations
 
 The experiment uses a reduced Natural Questions corpus containing judged documents and 1,000 distractors, with 400 validation queries. These scores are not full-corpus BEIR leaderboard results; timings depend on hardware and cache state.
-
-This edition makes the core behavior reusable and inspectable. Historical metrics and synthetic contract tests provide different kinds of evidence; neither establishes client deployment or commercial impact.

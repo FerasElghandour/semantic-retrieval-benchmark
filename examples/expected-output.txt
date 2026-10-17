@@ -1,0 +1,11 @@
+{
+  "ranked_indices": [
+    0
+  ],
+  "top_document": "walrus tusks",
+  "metrics": {
+    "recall": 1.0,
+    "precision": 1.0,
+    "mrr": 1.0
+  }
+}
