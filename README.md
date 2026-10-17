@@ -8,6 +8,15 @@ A standalone BM25 implementation, an optional Sentence Transformers index, and m
 
 ![Implementation mechanism: Documents and query → TF-IDF or BM25 scoring → Rank document identifiers → Recall and precision at k → Full-ranking reciprocal rank aggregation](assets/mechanism.svg)
 
+
+
+## Reproduce corpus retrieval
+
+A full-corpus benchmark entry point now retains rankings and evaluates supplied judgments. A new fixed BEIR SciFact test run uses5,183 documents and300 queries, with corpus provenance and full-ranking MRR.
+
+[Commands, artifacts and benchmark scope](BENCHMARKS.md) · [Versioned profiles](reproduction.json)
+
+
 ## Try a small example
 
 A tiny local corpus exercises lexical ranking and metrics. Reciprocal rank uses the full ranking; this is not a benchmark of pretrained embedding quality.

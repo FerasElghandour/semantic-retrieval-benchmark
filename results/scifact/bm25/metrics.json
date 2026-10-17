@@ -1,0 +1,14 @@
+{
+  "method": "BM25 k1=1.2 b=0.75",
+  "documents": 5183,
+  "queries": 300,
+  "k": 5,
+  "metrics": {
+    "recall": 0.7259444444444444,
+    "precision": 0.15733333333333369,
+    "mrr": 0.6318243178687389
+  },
+  "seconds": 5.520769541999471,
+  "input_sha256": "e9c3827c9bd548891c1799ca5b4b3d3d3673ab68560409be94b360589452498d",
+  "mrr_scope": "full ranking; not truncated at k"
+}

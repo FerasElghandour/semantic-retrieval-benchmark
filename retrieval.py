@@ -27,10 +27,10 @@ class BM25:
         return np.argsort(-scores,kind='stable')[:k].tolist()
 
 class SemanticIndex:
-    def __init__(self,documents,model_name):
+    def __init__(self,documents,model_name,revision=None):
         from sentence_transformers import SentenceTransformer
         if not documents:raise ValueError('Nonempty documents required')
-        self.model=SentenceTransformer(model_name)
+        self.model=SentenceTransformer(model_name,revision=revision)
         self.embeddings=self.model.encode(list(documents),normalize_embeddings=True)
     def search(self,query,k=5):
         if type(k) is not int or k<0:raise ValueError('Nonnegative integer k required')
@@ -52,3 +52,4 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('corpus',type=Path);p.add_argument('query');p.add_argument('--k',type=int,default=5);args=p.parse_args()
     documents=json.loads(args.corpus.read_text());index=BM25(documents)
     print(json.dumps([{'index':i,'text':documents[i]} for i in index.search(args.query,args.k)],indent=2))
+
