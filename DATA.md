@@ -1,3 +1,3 @@
-# Data and input preparation
+# Input contract
 
-Dataset acquisition is implemented in src/data_loader.py. Download BEIR Natural Questions separately under its provider terms; no question text, documents, embeddings, or model weights are bundled.
+For the CLI, provide a JSON array of document strings. BM25 returns zero-based document indices. evaluate accepts query-to-ranked-index mappings and query-to-positive-relevance dictionaries. SemanticIndex additionally requires sentence-transformers and an independently obtained model identifier authorized for your use. No corpus, query text, embedding store, or model weights are bundled. Historical scores refer to the earlier reduced-corpus study, not this portable index.

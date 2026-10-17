@@ -35,6 +35,8 @@ python retrieval.py /path/to/documents.json "your question"
 
 Prepare your own inputs as described in [DATA.md](DATA.md). Tests use generated fixtures and do not need credentials or provider calls. [VALIDATION.md](VALIDATION.md) records their scope.
 
+For optional dense retrieval, install `sentence-transformers` separately and pass an authorized model identifier to `SemanticIndex`. That dependency and model are not needed for the included lexical checks.
+
 ## Practical relevance and limitations
 
 The experiment uses a reduced Natural Questions corpus containing judged documents and 1,000 distractors, with 400 validation queries. These scores are not full-corpus BEIR leaderboard results; timings depend on hardware and cache state.
